@@ -20,20 +20,24 @@ namespace Ex01
         {
             return Math.Abs(firstVariable % secondVariable);
         }
-        static bool ConditionalConjunction(bool firstVariable, bool secondVariable) // Метод, выполняющий конъюнкцию
-        {
-            if ((firstVariable && secondVariable) != true)
-            {
-                return secondVariable;
-            }
-            else
-            {
-                return false;
-            }
-        }
         static bool LogicalOperand()
         {
+            Console.WriteLine("Logical Operand");  
             return true;
+        }
+        static void ConditionalConjunction(bool firstVariable, bool secondVariable)
+        {
+            firstVariable = firstVariable && LogicalOperand();
+            Console.WriteLine($"\n{firstVariable}");
+            secondVariable = secondVariable && LogicalOperand();
+            Console.WriteLine($"\n{secondVariable}");
+        }
+        static void ConditionalDisjunction (bool firstVariable, bool secondVariable)
+        {
+            firstVariable =  firstVariable || LogicalOperand();
+            Console.WriteLine($"\n{firstVariable}");
+            secondVariable = secondVariable || LogicalOperand();
+            Console.WriteLine($"\n{secondVariable}");
         }
         static void Main(string[] args)
         {
@@ -84,11 +88,11 @@ namespace Ex01
                         flag = false;
                         break;
                     case ConsoleKey.D5:
-                        Console.WriteLine($"\nFalse && True = {ConditionalConjunction(isFalse, isTrue)}"); // Условное И
+                        ConditionalConjunction(isFalse, isTrue); // Условное И
                         flag = false;
                         break;
                     case ConsoleKey.D6:
-                        Console.WriteLine($"\nTrue || False = {isTrue || LogicalOperand()} \nFalse || True = {isFalse || LogicalOperand()}"); // Условное ИЛИ
+                        ConditionalDisjunction(isTrue, isFalse); // Условное ИЛИ
                         flag = false;
                         break;
                     case ConsoleKey.D7:
