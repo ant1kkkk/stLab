@@ -4,40 +4,43 @@ namespace Ex3
 {
     public class Candidate : Person
     {
-        public enum DismissalReason
+        private enum DismissalReason
         {
             FamilyReasons = 1,
             ProfessionalGrowthLack = 2,
             LowSalary = 3,
             BadTeamMicroclimate = 4,
             LackManagementUnderstanding = 5,
-            other = 6,
+            Other = 6,
             NotWorked = 0
         }
 
         public static void DismissalReasons()
         {
-            string[] dismissalReasons =
+            string dismissalReasons = Console.ReadLine();
+            DismissalReason dismissalReason =
+                (DismissalReason) Enum.Parse(typeof(DismissalReason), dismissalReasons, ignoreCase: true);
+            switch (dismissalReason)
             {
-                "1", "2", "3", "4", "5", "6", "0", /*"Family reasons", "Professional growth lack", "Low salary",
-                "Bad team microclimate",
-                "Lack management understanding", "other", "null"*/
-            };
-            foreach (string dismissalReason in dismissalReasons)
-            {
-                DismissalReason dismissalReasonValue =
-                    (DismissalReason) Enum.Parse(typeof(DismissalReason), dismissalReason);
-                Console.WriteLine($"{dismissalReasonValue.ToString()}");
+                case DismissalReason.FamilyReasons:
+                    Console.WriteLine("Family Reasons");
+                    break;
+                case DismissalReason.ProfessionalGrowthLack:
+                    Console.WriteLine("Professional growth lack");
+                    break;
+                case DismissalReason.BadTeamMicroclimate:
+                    Console.WriteLine("Bad team microclimate");
+                    break;
+                case DismissalReason.LackManagementUnderstanding:
+                    Console.WriteLine("Lack management understanding");
+                    break;
+                case DismissalReason.Other:
+                    Console.WriteLine("Other");
+                    break;
+                case DismissalReason.NotWorked:
+                    Console.WriteLine($"{null}");
+                    break;
             }
-
-            //DismissalReason dismissalReasonFamilyReasons;
-            //dismissalReasonFamilyReasons = (DismissalReason) Enum.Parse(typeof(DismissalReason), dismissalReasons[0]);
-            string[] allReasons = {"Family reasons", "Professional growth lack", "Low salary",
-                "Bad team microclimate",
-                "Lack management understanding", "other", null};
-            string dis = DismissalReason.FamilyReasons.ToString();
-            dis = allReasons[0];
-            Console.WriteLine(dis);
         }
     }
 }
