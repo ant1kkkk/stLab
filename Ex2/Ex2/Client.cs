@@ -12,5 +12,10 @@ namespace Ex2
             foreach (var str in information)
                 Console.Write($"{str} ");
         }
+
+        public override void Display()
+        {
+            Console.WriteLine($"{FirstName} is a client.");
+        }
     }
 }

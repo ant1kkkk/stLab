@@ -14,6 +14,8 @@ namespace Ex2
                 {
                     var employee = new Employee();
                     employee.GetPerson();
+                    employee.PrintPerson(employee.FirstName, employee.LastName);
+                    employee.Display();
                     Console.Write("Enter your specialization: ");
                     employee.Specialization = Console.ReadLine();
                     Console.Write("How long is your working day?: ");
@@ -28,6 +30,8 @@ namespace Ex2
                     Employee.InformationAboutEmployee(employee.FirstName, employee.LastName, employee.Specialization);
                     var client = new Client();
                     client.GetPerson();
+                    client.PrintPerson(client.FirstName);
+                    client.Display();
                     Console.Write("Short information about client: ");
                     client.InformationAboutClient(client.FirstName, client.LastName);
                 }

@@ -17,13 +17,16 @@ namespace Ex2
             Console.WriteLine($"You're {firstName} {lastName}");
         }
 
+        public virtual void Display()
+        {
+            Console.WriteLine($"{FirstName} {LastName}");
+        }
         public void GetPerson()
         {
             Console.Write("\nEnter your first name: ");
             FirstName = Console.ReadLine();
             Console.Write("Enter your last name: ");
             LastName = Console.ReadLine();
-            Console.WriteLine($"You're {FirstName} {LastName}");
         }
     }
 }
