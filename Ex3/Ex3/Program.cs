@@ -7,6 +7,8 @@ namespace Ex3
         static void Main(string[] args)
         {
             Candidate.DismissalReasons();
+            var candidate = new Candidate();
+            candidate.Display();
         }
     }
 }

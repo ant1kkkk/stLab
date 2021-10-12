@@ -2,8 +2,9 @@
 
 namespace Ex3
 {
-    public class Candidate : Person
+    public class Candidate : IDisplayable, IPerson
     {
+        int id { get; set; }
         private enum DismissalReason
         {
             FamilyReasons = 1,
@@ -15,31 +16,53 @@ namespace Ex3
             NotWorked = 0
         }
 
-        public static void DismissalReasons()
+        public static string DismissalReasons()
         {
             string dismissalReasons = Console.ReadLine();
             DismissalReason dismissalReason =
                 (DismissalReason) Enum.Parse(typeof(DismissalReason), dismissalReasons, ignoreCase: true);
+            string dismissalReasonOut;
             switch (dismissalReason)
             {
                 case DismissalReason.FamilyReasons:
-                    Console.WriteLine("Family Reasons");
+                    dismissalReasonOut = "Family reasons";
                     break;
                 case DismissalReason.ProfessionalGrowthLack:
-                    Console.WriteLine("Professional growth lack");
+                    dismissalReasonOut = "Professional growth lack";
+                    break;
+                case DismissalReason.LowSalary:
+                    dismissalReasonOut = "Low salary";
                     break;
                 case DismissalReason.BadTeamMicroclimate:
-                    Console.WriteLine("Bad team microclimate");
+                    dismissalReasonOut = "Bad team microclimate";
                     break;
                 case DismissalReason.LackManagementUnderstanding:
-                    Console.WriteLine("Lack management understanding");
+                    dismissalReasonOut = "Lack management understanding";
                     break;
                 case DismissalReason.Other:
-                    Console.WriteLine("Other");
+                    dismissalReasonOut = "Other";
                     break;
                 case DismissalReason.NotWorked:
-                    Console.WriteLine($"{null}");
+                    dismissalReasonOut = null;
                     break;
+                default:
+                    dismissalReasonOut = "null";
+                    break;
+            }
+            
+            return dismissalReasonOut;
+        }
+
+        public void Display()
+        {
+            if (DismissalReasons() != null)
+            {
+                Console.WriteLine(
+                    $"Hello, I am {IPerson.FullName}.\nI want to be a {IPerson.JobTitle} ({IPerson.JobDescription}) with a salary from {IPerson.JobSalary}.\nI quit my previous job for a reason of {DismissalReasons()}");
+            }
+            else
+            {
+                Console.WriteLine($"Hello, I am {IPerson.FullName}.\nI want to be a {IPerson.JobTitle} ({IPerson.JobDescription}) with a salary from {IPerson.JobSalary}.\nI haven't worked anywhere before");
             }
         }
     }
